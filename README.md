@@ -22,8 +22,7 @@ Key contributions:
 
 1. Clone or download the repository.
 2. Run the desired analysis script (`NonlinearAnalysis_IN.m`, etc.).
-3. Use the plots and THD results to compare injection points.
-4. All scripts are commented and modular for modification or integration.
+3. Interpret Results 
 
 ## 📜 Licensing
 
