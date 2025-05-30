@@ -14,11 +14,11 @@ C_matrix = [0 1];
 D_matrix = [0];
 
 % Simulation
-t_end = 0.6; % need to be large (to keep most of analysis in steady state)
+t_end = 0.5; % need to be large (to keep most of analysis in steady state)
 dt = 1e-6;
 Fs = 1 / dt;
 num_harmonics = 5;
-f_pwm = 40e3; % increasing can help reduce THD?
+f_pwm = 80e3; % increasing can help reduce THD?
 t_vect = 0:dt:t_end;
 
 % Sinusoidal Perturbation 
@@ -39,7 +39,7 @@ mag_u = squeeze(mag_u);
 phase_u = squeeze(phase_u);
 
 % Desired maximum output amplitude (e.g., 10 mV)
-Vout_max = 15e-3;
+Vout_max = 10e-3;
 
 %% PWM Injection (Dual Input Model)
 % Define E matrix for PWM comparator modulation
@@ -100,7 +100,7 @@ title(sprintf(['Time Domain Response to PWM Injection:\n', '$u(t) = D$, $\\tilde
 %% PWM Injection - Amplitude & Frequency Limits
 
 % Bandwidth
-fprintf('3dB Bandwidth, PWM Injection: %.2f Hz\n', cutoff_freq_PWM);  % in Hz
+fprintf('3dB Bandwidth, PWM Injection: %.2f Hz\n', f_cutoff_PWM);  % in Hz
 
 % Attenuation
 max_attenuation_db_PWM = 20*log10(max(mag_vtilde_PWM));
@@ -154,6 +154,5 @@ ylabel('Injection Amplitude $|\tilde{v}|$ [V]', 'Interpreter', 'latex');
 zlabel('$\Sigma~\mathrm{THD}$ [\%]', 'Interpreter', 'latex');
 title('Total Harmonic Distortion vs. PWM Injection', 'Interpreter', 'latex');
 set(gca, 'FontSize', 10);
-zlim([0 5]);
 grid on;
 view(20, 25);
