@@ -39,7 +39,7 @@ mag_u = squeeze(mag_u);
 phase_u = squeeze(phase_u);
 
 % Desired maximum output amplitude (e.g., 10 mV)
-Vout_max = 15e-3;
+Vout_max = 10e-3;
 
 %% Output Injection (Dual Input Model) 
 % Define E matrix for output injection
@@ -59,7 +59,7 @@ H_vtilde_OUT = tf(num_OUT, den_OUT);  % perturbation input TF
 
 % Frequency Analysis - Small Signal
 [mag_vtilde_OUT, phase_vtilde_OUT, ~] = bode(H_vtilde_OUT, w_u);  % match freq vector
-mag_vtilde_OUT = squeeze(mag_vtilde_OUT);
+mag_vtilde_OUT = squeeze(mag_vtilde_OUT)*0.01; % scale by injection amplitde (only for output injection
 phase_vtilde_OUT = squeeze(phase_vtilde_OUT);
 
 % Cutoff frequency (3dB from DC or peak)
@@ -164,4 +164,3 @@ title('Total Harmonic Distortion vs. Output Injection', 'Interpreter', 'latex');
 set(gca, 'FontSize', 10);
 grid on;
 view(35, 30);
-
