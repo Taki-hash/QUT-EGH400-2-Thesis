@@ -39,7 +39,7 @@ mag_u = squeeze(mag_u);
 phase_u = squeeze(phase_u);
 
 % Desired maximum output amplitude (e.g., 10 mV)
-Vout_max = 15e-3;
+Vout_max = 10e-3;
 
 %% Input Injection (Dual Input Model) 
 % Define B and E matrices
@@ -156,4 +156,3 @@ set(gca, 'FontSize', 10);
 zlim([0 5]);
 grid on;
 view(20, 25);
-
