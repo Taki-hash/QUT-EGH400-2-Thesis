@@ -142,7 +142,7 @@ for i = 1:length(f_PWM)
     v_tilde = epsilon_PWM(i) * sin(2*pi*f_PWM(i)*t_vect);
     [~, x_pwm, ~, fn, ~] = simulateNonlinearBuck(Vpv, R, L, C, D, f_pwm, t_end, dt, v_tilde, 3, false, false);
     thd_sf_pwm = computeTHD(x_pwm(:,2), Fs, f_PWM(i), num_harmonics);
-    thd_sw_pwm = computeTHD(x_pwm(:,2), Fs, fn, num_harmonics);
+    thd_sw_pwm = computeTHD(x_pwm(:,2), Fs, f_pwm, num_harmonics);
     tot_THD_PWM(i) = thd_sf_pwm + thd_sw_pwm;
 
 end

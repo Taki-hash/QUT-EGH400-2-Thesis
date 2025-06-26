@@ -141,7 +141,7 @@ for i = 1:length(f_IN)
     v_tilde = epsilon_IN(i) * sin(2*pi*f_IN(i)*t_vect);
     [~, x_in, ~, fn, ~] = simulateNonlinearBuck(Vpv, R, L, C, D, f_pwm, t_end, dt, v_tilde, 1, false, false);
     thd_sf_in = computeTHD(x_in(:,2), Fs, f_IN(i), num_harmonics);
-    thd_sw_in = computeTHD(x_in(:,2), Fs, fn, num_harmonics);
+    thd_sw_in = computeTHD(x_in(:,2), Fs, f_pwm, num_harmonics);
     tot_THD_IN(i) = thd_sf_in + thd_sw_in;
 
 end
